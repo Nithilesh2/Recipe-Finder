@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  height: 100vh;
+  width: 100%;
+  background-color: #90ee90;
+}
+
+.navbar {
+  height: 75px;
+  max-width: 2460px;
+  width: 100%;
+}
+
+.navitems {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 28px;
+  list-style-type: none;
+  height: auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3rem;
+  padding-top: 20px;
+}
+
+.navitems li {
+  cursor: pointer;
+  transition: all 0.5s;
+  border-bottom: 5px solid transparent;
+  border-radius: 6px;
+}
+
+.navitems li:first-child {
+  border-bottom: 5px solid black;
+}
+
+.navitems li:hover {
+  border-bottom: 5px solid black;
+}
+
+.interior {
+  transition: all 0.5s;
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.left {
+  cursor: default;
+  margin-left: 40px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+h1::selection,
+h3::selection {
+  color: #90ee90;
+  background-color: rgba(0, 0, 0, 0.855);
+}
+
+.left > h1,
+h3 {
+  margin-left: 25px;
+}
+
+.left > h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 40px;
+}
+
+.left h3 {
+  font-family: "Nunito", sans-serif;
+  font-size: 30px;
+}
+
+.button {
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
+  height: 40px;
+  width: 250px;
+  border-radius: 20px;
+  margin-left: 40px;
+  margin-bottom: 20px;
+  transition: all 0.5s;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.855);
+  color: #90ee90;
+}
+
+.right {
+  height: 100%;
+  width: 60%;
+}
+
+lord-icon {
+  margin-top: 50px;
+  width: 450px;
+  height: 450px;
+}
+
+@media screen and (max-width: 790px) {
+  .right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .left {
+    margin-left: 0px;
+  }
+  .interior {
+    width: auto;
+    flex-direction: column-reverse;
+  }
+  lord-icon {
+    margin-top: 10px;
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .main {
+    background-position: right;
+  }
+}
