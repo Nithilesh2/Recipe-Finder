@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.listItems {
+  font-family: "Nunito", sans-serif;
+  list-style-type: none;
+  height: 350px;
+  width: 280px;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #8bd38b;
+  gap: 0.58rem;
+}
+
+.image {
+  margin-top: 15px;
+  height: 180px;
+  width: 180px;
+  border-radius: 10px;
+  transition: filter 0.3s ease;
+}
+
+.recipeName {
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+  cursor: default;
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.button {
+  height: 40px;
+  width: 100px;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.button:first-child {
+  background-color: rgba(255, 54, 54, 0.77);
+}
+
+.button:last-child:hover {
+  background-color: #abdfab;
+  color: black;
+}

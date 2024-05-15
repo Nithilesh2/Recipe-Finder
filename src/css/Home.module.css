@@ -16,6 +16,9 @@
   height: 75px;
   max-width: 2460px;
   width: 100%;
+  position: fixed;
+  background-color: #90ee90;
+  z-index: 1;
 }
 
 .navitems {

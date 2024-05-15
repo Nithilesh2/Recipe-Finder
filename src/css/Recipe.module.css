@@ -14,6 +14,9 @@
   height: 75px;
   max-width: 2460px;
   width: 100%;
+  position: fixed;
+  background-color: #90ee90;
+  z-index: 1;
 }
 
 .navitems {
@@ -48,6 +51,7 @@
 }
 
 .interior {
+  padding-top: 80px;
   height: auto;
   width: 100%;
   display: flex;
@@ -79,17 +83,79 @@
 }
 
 .searchButton {
-  background-color: #daffda;
   height: 80%;
-  width: 50px;
+  width: 60px;
   border-radius: 0 50px 50px 0;
   position: relative;
   left: -51px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: bolder;
   font-family: "Nunito", sans-serif;
-  color: #1a431a;
   cursor: pointer;
+  transition: all 0.5s;
+  color: #daffda;
+  background-color: #1a431a;
+}
+
+.searchResults {
+  margin-top: 10px;
+}
+
+.recipeResults {
+  font-family: "Nunito", sans-serif;
+}
+.data {
+  height: 100%;
+  width: 100%;
+  background-color: #90ee90;
+  padding: 30px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.dataItems {
+  background-color: #90ee90;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  justify-content: center;
+  margin: 0 30px 0 30px;
+}
+
+.upArrow {
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  z-index: 1;
+  font-size: 36px;
+  font-family: monospace;
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.855);
+  color: #90ee90;
+  border: 1px solid rgba(0, 0, 0, 0.855);
+  cursor: default;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #90ee90;
+  border: 2px solid rgba(0, 0, 0, 0.623);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.855);
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 420px) {
@@ -98,5 +164,16 @@
   }
   .searchBar {
     width: 85%;
+  }
+  .upArrow {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    padding-bottom: 5px;
+    font-weight: 700;
+    right: 0;
   }
 }
