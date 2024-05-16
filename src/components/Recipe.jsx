@@ -10,15 +10,17 @@ import "../css/ToastStyles.css";
 
 const Recipe = () => {
   const notifyTrue = () =>
-    toast.success("range is not kept so recipes will be upto 50", {
+    toast.success("Range is not kept so recipes will be up to 50", {
       className: "Toastify__toast--custom",
       progressClassName: "Toastify__progress-bar--custom",
     });
+
   const override = {
     display: "block",
     margin: "0 auto",
     borderColor: "#90ee90",
   };
+
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState("");
   const [recipeData, setRecipeData] = useState([]);
@@ -28,45 +30,32 @@ const Recipe = () => {
   const rangeRef = useRef();
 
   async function btnClicked() {
-    const query = inputRef.current.value;
-    const dataRange = rangeRef.current.value;
-    if (query === "") {
+    if (inputRef.current.value === "") {
       alert("Please enter input");
     } else {
-      if (dataRange === "") {
-        const url = `https://api.edamam.com/search?q=${query}&from=0&to=50&app_id=abc32a2c&app_key=d644645ec14fbf33a06f909660dd9521`;
+      let url;
+      if (rangeRef.current.value === "") {
+        url = `https://api.edamam.com/search?q=${inputRef.current.value}&from=0&to=50&app_id=abc32a2c&app_key=d644645ec14fbf33a06f909660dd9521`;
         notifyTrue();
-        setData(query);
-        setLoading(true);
-        try {
-          const res = await axios.get(url);
-          const recipes = res.data.hits.map((hit) => hit.recipe);
-          setRecipeData(recipes);
-        } catch (error) {
-          console.error("Error fetching recipes:", error);
-        } finally {
-          setLoading(false);
-          inputRef.current.value = "";
-        }
       } else {
-        const url = `https://api.edamam.com/search?q=${query}&from=0&to=${dataRange}&app_id=abc32a2c&app_key=d644645ec14fbf33a06f909660dd9521`;
-        setData(query);
-        setLoading(true);
-        try {
-          const res = await axios.get(url);
-          const recipes = res.data.hits.map((hit) => hit.recipe);
-          setRecipeData(recipes);
-        } catch (error) {
-          console.error("Error fetching recipes:", error);
-        } finally {
-          setLoading(false);
-          inputRef.current.value = "";
-        }
+        url = `https://api.edamam.com/search?q=${inputRef.current.value}&from=0&to=${rangeRef.current.value}&app_id=abc32a2c&app_key=d644645ec14fbf33a06f909660dd9521`;
+      }
+      setData(inputRef.current.value);
+      setLoading(true);
+      try {
+        const res = await axios.get(url);
+        const recipes = res.data.hits.map((hit) => hit.recipe);
+        setRecipeData(recipes);
+      } catch (error) {
+        console.error("Error fetching recipes:", error);
+      } finally {
+        setLoading(false);
+        inputRef.current.value = "";
       }
     }
   }
 
-  const listenToSCroll = () => {
+  const listenToScroll = () => {
     if (window.pageYOffset > 99) {
       buttonRef.current.style.opacity = "1";
     } else {
@@ -75,8 +64,21 @@ const Recipe = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", listenToSCroll);
+    window.addEventListener("scroll", listenToScroll);
+    return () => {
+      window.removeEventListener("scroll", listenToScroll);
+    };
   }, []);
+
+  function enterKeyPressed(eve) {
+    if (eve.key === "Enter") {
+      if (eve.target.id === "recipesNeeded") {
+        btnClicked();
+      } else {
+        document.getElementById("recipesNeeded").focus();
+      }
+    }
+  }
 
   return (
     <>
@@ -106,11 +108,14 @@ const Recipe = () => {
               placeholder="Potato,Tomato | Biryani"
               className={style.searchBar}
               ref={inputRef}
+              onKeyPress={enterKeyPressed}
+              id="search"
             />
             <button
               className={style.searchButton}
               type="button"
               onClick={btnClicked}
+              id="searchButton"
             >
               Search
             </button>
@@ -121,6 +126,8 @@ const Recipe = () => {
               placeholder="50"
               className={style.recipesNeededNumber}
               ref={rangeRef}
+              id="recipesNeeded"
+              onKeyPress={enterKeyPressed}
             />
           </div>
           <div className={style.searchResults}>
