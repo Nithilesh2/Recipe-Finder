@@ -73,10 +73,10 @@
   height: 80%;
   max-width: 450px;
   width: 60%;
-  border-radius: 50px;
+  border-radius: 50px 0 0 50px;
   background-color: #daffda;
   color: #1a431a;
-  font-size: 18px;
+  font-size: 20px;
   font-family: "Nunito", sans-serif;
   font-weight: 700;
   padding-left: 20px;
@@ -87,7 +87,7 @@
   width: 60px;
   border-radius: 0 50px 50px 0;
   position: relative;
-  left: -51px;
+  left: -1px;
   font-size: 14px;
   font-weight: bolder;
   font-family: "Nunito", sans-serif;
@@ -95,6 +95,26 @@
   transition: all 0.5s;
   color: #daffda;
   background-color: #1a431a;
+}
+
+.range {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipesNeededNumber {
+  background-color: #daffda;
+  color: #1a431a;
+  height: 25px;
+  width: 65px;
+  border-radius: 50px;
+  padding-left: 10px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: bolder;
 }
 
 .searchResults {
@@ -163,7 +183,11 @@
     padding-left: 30px;
   }
   .searchBar {
-    width: 85%;
+    width: 70%;
+    margin-right: 18px;
+  }
+  .searchButton {
+    left: -20px;
   }
   .upArrow {
     height: 40px;
